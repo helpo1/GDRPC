@@ -1,0 +1,21 @@
+[BEGINVDF]
+Comment=GDRPC Output Extender v1.00 (FrameFunctions + CC)%%NExtends information output to Gothic Discord Rich Presence through LeGo HookDaedalus / FrameFunctions and GDRPC API.%%NTo be used with GDRPC by helpo1 (see https://github.com/helpo1/GDRPC/).
+BaseDir=.\
+VDFName=.\GDRPCext-FF.vdf
+
+[FILES]
+; Resources (list the specific files from _work here)
+; _work\* -r
+
+; Script files
+Ninja\GDRPCext\* -r
+
+[EXCLUDE]
+_work\Data\Scripts\* -r
+*.vm
+*.vdf
+*.bat
+
+[INCLUDE]
+
+[ENDVDF]

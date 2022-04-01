@@ -1,8 +1,7 @@
 #pragma once
 
-#include <cstring>
-
-#include "../libs/discord-rpc/include/discord_rpc.h"
+#include <string>
 
 void initPresence();
-void updatePresenceState (char* text);
+void preparePresence(size_t type, std::string text);
+void updatePresence();

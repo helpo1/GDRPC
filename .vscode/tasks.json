@@ -1,0 +1,412 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+
+		{
+			"label": "Build GDRPC (template)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=TMPLT"//,
+				// "EXE_CURRENT=...",
+				// "APP_ID=..."
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		// INSTALLER BUILD TASKS
+
+		{
+			"label": "Build GDRPC-Setup (installer, no rebuilding)",
+			"type": "shell",
+			"command": "makensis",
+			"args": [
+				"setup\\GDRPC.nsi"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC-Setup (installer, rebuild all platforms)",
+			"type": "shell",
+			"command": "makensis",
+			"args": [
+				"setup\\GDRPC.nsi"
+			],
+			"problemMatcher": [],
+			"group": "build",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"Build GDRPC for G1 (vanilla)",
+				"Build GDRPC for G1 (w/ PK)",
+				"Build GDRPC for G1 (w/ SP)",
+				"Build GDRPC for G1 (w/ Union 1.0k)",
+				"Build GDRPC for G1 (w/ Union 1.0l)",
+				"Build GDRPC for GSequel (vanilla)",
+				"Build GDRPC for GSequel (w/ SP)",
+				"Build GDRPC for GSequel (w/ Union 1.0k)",
+				"Build GDRPC for GSequel (w/ Union 1.0l)",
+				"Build GDRPC for G2 (vanilla)",
+				"Build GDRPC for G2 (w/ RV)",
+				"Build GDRPC for G2 (w/ SP)",
+				"Build GDRPC for G2 (w/ Union 1.0k)",
+				"Build GDRPC for G2 (w/ Union 1.0l)",
+				"Build GDRPC for G2A (vanilla)",
+				"Build GDRPC for G2A (w/ RV)",
+				"Build GDRPC for G2A (w/ SP)",
+				"Build GDRPC for G2A (w/ Union 1.0k)",
+				"Build GDRPC for G2A (w/ Union 1.0l)",
+				"Build GDRPC for G2A (w/ R2)",
+				"Build GDRPC for G2A (w/ NB 2.0.xx)",
+				"Build GDRPC for G2A (w/ NB 2.1.xx)"
+			]
+		},
+
+		// G1 BUILD TASKS
+
+		{
+			"label": "Build GDRPC for G1 (vanilla)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_G1.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G1",
+				"EXE_CURRENT=EXE_G1",
+				"APP_ID=802668299514413066"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G1 (w/ PK)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_G1.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G1_PK",
+				"EXE_CURRENT=EXE_PK_108K",
+				"APP_ID=802668299514413066"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G1 (w/ SP)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_SP1.8.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G1_SP",
+				"EXE_CURRENT=EXE_PK_108K",
+				"APP_ID=802668299514413066"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G1 (w/ Union 1.0k)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0k.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G1_Union_10k",
+				"EXE_CURRENT=EXE_PK_108K",
+				"APP_ID=802668299514413066"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G1 (w/ Union 1.0l)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0l.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G1_Union_10l",
+				"EXE_CURRENT=EXE_PK_108K",
+				"APP_ID=802668299514413066"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		// GS BUILD TASKS
+
+		{
+			"label": "Build GDRPC for GSequel (vanilla)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_G1.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=GS",
+				"EXE_CURRENT=EXE_GS",
+				"APP_ID=868155280083533874"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for GSequel (w/ SP)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_SP1.8.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=GS_SP",
+				"EXE_CURRENT=EXE_GS",
+				"APP_ID=868155280083533874"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for GSequel (w/ Union 1.0k)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0k.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=GS_Union_10k",
+				"EXE_CURRENT=EXE_GS",
+				"APP_ID=868155280083533874"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for GSequel (w/ Union 1.0l)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0l.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=GS_Union_10l",
+				"EXE_CURRENT=EXE_GS",
+				"APP_ID=868155280083533874"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		// G2 BUILD TASKS
+
+		{
+			"label": "Build GDRPC for G2 (vanilla)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32e_G2E.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2",
+				"EXE_CURRENT=EXE_G2",
+				"APP_ID=868103949528498206"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2 (w/ RV)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32e_G2E.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2_RV",
+				"EXE_CURRENT=EXE_RV_130",
+				"APP_ID=868103949528498206"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2 (w/ SP)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_SP1.8.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2_SP",
+				"EXE_CURRENT=EXE_RV_130",
+				"APP_ID=868103949528498206"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2 (w/ Union 1.0k)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0k.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2_Union_10k",
+				"EXE_CURRENT=EXE_RV_130",
+				"APP_ID=868103949528498206"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2 (w/ Union 1.0l)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0l.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2_Union_10l",
+				"EXE_CURRENT=EXE_RV_130",
+				"APP_ID=868103949528498206"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		// G2A BUILD TASKS
+
+		{
+			"label": "Build GDRPC for G2A (vanilla)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_G2G.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2A",
+				"EXE_CURRENT=EXE_G2A",
+				"APP_ID=870027346349002793"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2A (w/ RV)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_G2G.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2A_RV",
+				"EXE_CURRENT=EXE_RV_260",
+				"APP_ID=870027346349002793"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2A (w/ SP)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_SP1.8.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2A_SP",
+				"EXE_CURRENT=EXE_RV_260",
+				"APP_ID=870027346349002793"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2A (w/ Union 1.0k)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0k.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2A_Union_10k",
+				"EXE_CURRENT=EXE_RV_260",
+				"APP_ID=870027346349002793"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2A (w/ Union 1.0l)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0l.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2A_Union_10l",
+				"EXE_CURRENT=EXE_RV_260",
+				"APP_ID=870027346349002793"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		// SPECIAL BUILD TASKS
+
+		{
+			"label": "Build GDRPC for G2A (w/ R2)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_R2.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2A_R2",
+				"EXE_CURRENT=EXE_RV_260",
+				"APP_ID=870027390275948555"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2A (w/ NB 2.0.xx)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0k.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2A_NB_20xx",
+				"EXE_CURRENT=EXE_RV_260",
+				"APP_ID=868105107726807040"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		},
+
+		{
+			"label": "Build GDRPC for G2A (w/ NB 2.1.xx)",
+			"type": "shell",
+			"command": "mingw32-make",
+			"args": [
+				"ORIGINAL_VDFS_LIB_PATH=input\\vdfs32g_UN1.0l_beta.dll",
+				"DLL_EXPORTER=pexports",
+				"TARGET_VERSION=G2A_NB_21xx",
+				"EXE_CURRENT=EXE_RV_260",
+				"APP_ID=868105107726807040"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		}
+
+	]
+}
